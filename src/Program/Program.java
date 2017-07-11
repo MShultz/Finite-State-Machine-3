@@ -24,8 +24,8 @@ public class Program {
         String input;
         System.out.println("Welcome to Chat Bot!");
         for (; ; ) {
-            input = scan.nextLine();
-            for (int i = 0; i < input.length() && machine.getFoundState().equals("Default"); ++i) {
+            input = scan.nextLine() + "\n";
+            for (int i = 0; i < input.length() && !machine.getFoundState().contains("Found"); ++i) {
                 machine.handleCharacter(input.charAt(i));
             }
             printResponse();
@@ -37,23 +37,20 @@ public class Program {
     private void printResponse(){
         String response;
         switch(machine.getFoundState()){
-            case "Hi":
-                response = Responses.hiResponses[rand.nextInt(Responses.hiResponses.length)];
+            case "doFound":
+                response = Responses.doResponses[rand.nextInt(Responses.doResponses.length)];
                 break;
-            case "Hello":
-                response = Responses.helloResponses[rand.nextInt(Responses.helloResponses.length)];
+            case "doingFound":
+                response = Responses.doingResponses[rand.nextInt(Responses.doingResponses.length)];
                 break;
-            case "Howdy":
-                response = Responses.howdyResponses[rand.nextInt(Responses.howdyResponses.length)];
+            case "youFound":
+                response = Responses.youResponses[rand.nextInt(Responses.youResponses.length)];
                 break;
-            case "Aloha":
-                response = Responses.alohaResponse[rand.nextInt(Responses.howdyResponses.length)];
-                break;
-            case "Thank":
-                response = Responses.thanksResponse[rand.nextInt(Responses.thanksResponse.length)];
+            case "ahoyFound":
+                response = Responses.ahoyResponses[rand.nextInt(Responses.ahoyResponses.length)];
                 break;
             default:
-                response = Responses.nonHiResponses[rand.nextInt(Responses.thanksResponse.length)];
+                response = Responses.none[rand.nextInt(Responses.none.length)];
                 break;
         }
 
